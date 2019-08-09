@@ -17,14 +17,15 @@
  *  You should have received a copy of the GNU General Public License
  *  along with Moeditor. If not, see <http://www.gnu.org/licenses/>.
  */
-/*html, body {
+
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
   -webkit-user-select: none;
-}*/
+}
 
 #side-menu {
   width: 300px;
@@ -95,7 +96,7 @@
   opacity: 0;
 }
 
-#markdown_main {
+#main {
   transition: all 500ms ease-in-out;
   position: fixed;
   left: 0;
@@ -104,8 +105,7 @@
   height: 100%;
 }
 
-notransition
-#editor-container {
+#main-container {
   height: calc(100% - 25px);
 }
 
@@ -125,30 +125,30 @@ notransition
   transition: all 500ms ease-in-out;
 }
 
-#markdown_main.read-mode #left-panel {
+#main.read-mode #left-panel {
   left: -50%;
   width: 50%;
 }
 
-#markdown_main.read-mode #right-panel {
+#main.read-mode #right-panel {
   width: 100%;
   padding-right: 4px;
 }
 
-#markdown_main.read-mode #right-panel .cover-top {
+#main.read-mode #right-panel .cover-top {
   left: 0;
   width: calc(100% - 10px);
 }
 
-#markdown_main.write-mode #left-panel {
+#main.write-mode #left-panel {
   width: 100%;
 }
 
-#markdown_main.read-mode #left-panel .cover-top {
+#main.read-mode #left-panel .cover-top {
   width: calc(100% - 10px);
 }
 
-#markdown_main.write-mode #right-panel {
+#main.write-mode #right-panel {
   right: -50%;
   width: 50%;
 }
@@ -161,19 +161,19 @@ notransition
   -webkit-user-select: initial;
 }
 
-#markdown_main.write-mode.write-mode-thin .CodeMirror-scroll {
+#main.write-mode.write-mode-thin .CodeMirror-scroll {
   width: calc(100% / 3 + 6px) !important;
   padding-left: calc(100% / 3) !important;
   padding-right: calc(100% / 3) !important;
 }
 
-#markdown_main.write-mode.write-mode-medium .CodeMirror-scroll {
+#main.write-mode.write-mode-medium .CodeMirror-scroll {
   width: calc(100% / 2 + 6px) !important;
   padding-left: calc(100% / 4) !important;
   padding-right: calc(100% / 4) !important;
 }
 
-#markdown_main.write-mode.write-mode-wide .CodeMirror-scroll {
+#main.write-mode.write-mode-wide .CodeMirror-scroll {
   width: calc((100% / 3) * 2 + 6px) !important;
   padding-left: calc(100% / 6) !important;
   padding-right: calc(100% / 6) !important;
@@ -263,19 +263,19 @@ notransition
   transition: all 500ms ease-in-out;
 }
 
-#markdown_main.read-mode #cover-bottom-background-left {
+#main.read-mode #cover-bottom-background-left {
   left: -50%;
 }
 
-#markdown_main.read-mode #cover-bottom-background-right {
+#main.read-mode #cover-bottom-background-right {
   width: 100%;
 }
 
-#markdown_main.write-mode #cover-bottom-background-left {
+#main.write-mode #cover-bottom-background-left {
   width: 100%;
 }
 
-#markdown_main.write-mode #cover-bottom-background-right {
+#main.write-mode #cover-bottom-background-right {
   right: -50%;
 }
 
@@ -314,16 +314,16 @@ notransition
   color: #dcdcdc;
 }
 
-#editor * {
+/*#editor * {
     transition: all 500ms ease-in-out;
-}
+}*/
 
 body[settings-editor-font="default"] #editor * {
-  font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', monospace !important;
+  font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', 'monospace' !important;
 }
 
 html[lang="zh_CN"] body[settings-editor-font="default"] #editor * {
-  font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', monospace, 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
+  font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', 'monospace', 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
 }
 
 body[settings-editor-font="monospace"] #editor * {
@@ -347,7 +347,7 @@ body[settings-editor-font="sans"] #editor * {
   height: 100%;
 }
 
-#pre-container-wrapper {
+#container-wrapper {
   width: calc(100% + 6px);
   height: 100%;
   overflow-y: scroll;
@@ -355,7 +355,7 @@ body[settings-editor-font="sans"] #editor * {
   outline: none;
 }
 
-#pre-container {
+#container {
   padding-top: 40px;
   padding-bottom: 30px;
   padding-left: 45px;
@@ -365,28 +365,28 @@ body[settings-editor-font="sans"] #editor * {
   -webkit-user-select: initial;
 }
 
-#markdown_main.read-mode #pre-container {
+#main.read-mode #container {
   padding-left: 0;
   padding-right: 0;
 }
 
-#markdown_main.read-mode #pre-container-wrapper {
+#main.read-mode #container-wrapper {
   width: calc(100%);
 }
 
-#markdown_main.read-mode.read-mode-thin #pre-container {
+#main.read-mode.read-mode-thin #container {
   width: calc(100% / 3);
   margin-left: calc(100% / 3);
   margin-right: calc(100% / 3);
 }
 
-#markdown_main.read-mode.read-mode-medium #pre-container {
+#main.read-mode.read-mode-medium #container {
   width: calc(100% / 2);
   margin-left: calc(100% / 4);
   margin-right: calc(100% / 4);
 }
 
-#markdown_main.read-mode.read-mode-wide #pre-container {
+#main.read-mode.read-mode-wide #container {
   width: calc((100% / 3) * 2);
   margin-left: calc(100% / 6);
   margin-right: calc(100% / 6);
@@ -436,7 +436,7 @@ body[settings-editor-font="sans"] #editor * {
   z-index: 1000000 !important;
 }
 
-#markdown_main.write-mode .CodeMirror-vscrollbar {
+#main.write-mode .CodeMirror-vscrollbar {
   position: fixed !important;
   right: 4px !important;
   bottom: 25px !important;

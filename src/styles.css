@@ -4,4 +4,5 @@
 @import "../node_modules/katex/dist/katex.min.css";
 @import "./assets/moe/base16-light.css";
 @import "./assets/moe/moe-style.css";
-@import "./assets/moe/gfm_style.css";
+/*预览样式*/
+@import "assets/moe/themes/GitHub/style.css";

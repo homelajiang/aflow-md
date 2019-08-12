@@ -43,7 +43,7 @@ function renderFlow(str) {
 
 function renderSequence(str) {
   const diagram = Diagram.parse(str);
-  diagram.drawSVG(div, {theme: 'hand'});
+  diagram.drawSVG(div, {theme: 'simple'});
   const res = div.innerHTML;
   div.innerHTML = '';
   return `<div>${res}</div>`;

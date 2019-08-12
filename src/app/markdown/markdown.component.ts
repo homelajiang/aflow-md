@@ -5,6 +5,8 @@ import {MoeditorMathRender} from './moe-math';
 
 import {MoeditorHighlight} from './moe-highlight';
 import {MoeditorUMLRenderer} from './moe-uml';
+import {MoeTest} from './moe-test';
+
 
 import url from 'url';
 // @ts-ignore
@@ -41,6 +43,7 @@ import 'codemirror/addon/mode/overlay';
 import 'codemirror/addon/mode/multiplex';
 import 'codemirror/addon/scroll/simplescrollbars';
 import 'codemirror/addon/selection/active-line';
+import {MoeScroll} from './moe-scroll';
 
 MoeMark.setOptions({
   math: true,
@@ -59,15 +62,10 @@ MoeMark.setOptions({
 export class MarkdownComponent implements OnInit, AfterViewInit {
 
   private editor: CodeMirror.EditorFromTextArea;
+  private scroller: MoeScroll;
 
   updatePreviewing = false;
   updatePreviewRunning = false;
-
-  editMode: string;
-
-  private lineNumbers: number[];
-  private scrollMap = new Array(2); // 滚动记录器
-
 
   preTemp = {
     content: '',
@@ -86,6 +84,7 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.codeMirrorInit();
     this.moeMarkInit();
+
   }
 
 
@@ -118,12 +117,12 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 
     this.editor.focus();
 
-    this.editor.setValue('## 回复可见的是\n' +
-      '>引用\n\n* 元\--啦啦--n\n**哇呕**\n```javascript\nfunction(){\nalert("yuan");\n}\n' +
-      'module.exports = require(\'./lib/marked\');\n' +
-      'import "com.android.utils.*"' + '\n' +
-      '```\n' + '$$E=mc^2$$');
-    // this.editor.setValue('$$E=mc^2$$');
+    // this.editor.setValue('## 回复可见的是\n' +
+    //   '>引用\n\n* 元\--啦啦--n\n**哇呕**\n```javascript\nfunction(){\nalert("yuan");\n}\n' +
+    //   'module.exports = require(\'./lib/marked\');\n' +
+    //   'import "com.android.utils.*"' + '\n' +
+    //   '```\n' + '$$E=mc^2$$');
+    this.editor.setValue(MoeTest.editorText);
 
     this.editor.on('change', (editor, obj) => {
       this.updatePre(false);
@@ -133,25 +132,33 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
       this.updatePre(true);
     }, 0);
 
-    /*    // workaround for the .button is still :hover after maximize window
-        $('#cover-bottom .button-bottom').mouseover(function() {
-          $(this).addClass('hover');
-        }).mouseout(function() {
-          $(this).removeClass('hover');
-        }).click(function() {
-          var s = $(this).data('action');
-          if (s === 'menu') MoeditorSideMenu.open();
-        });*/
+    MoeApp.editor = this.editor;
+
+    const leftPanel = document.querySelector('#left-panel');
+    leftPanel.addEventListener('click', (e) => {
+      if (e.target === leftPanel) {
+        this.editor.focus();
+      }
+    });
+
+    if (MoeApp.config['focus-mode'] === true) {
+      document.getElementById('editor').classList.add('focus');
+    }
+
+    document.getElementById('button-bottom-focus').addEventListener('click', (e) => {
+      document.getElementById('editor').classList.toggle('focus');
+      MoeApp.config['focus-mode'] = document.getElementById('editor').classList.contains('focus');
+    });
+
   }
 
   moeMarkInit() {
-
-
+    this.scroller = new MoeScroll();
   }
 
   updatePre(force: boolean) {
     this.updatePreview(this.editor, force, () => {
-      // TODO scroll
+      this.scroller.editorToPreviewer();
     });
   }
 
@@ -189,8 +196,8 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
       this.preTemp.document_edited = true;
     }
 
-    if (this.editMode && !this.editMode.startsWith('preview')
-      && !this.editMode.startsWith('read')) {
+    if (MoeApp.editMode && !MoeApp.editMode.startsWith('preview')
+      && !MoeApp.editMode.startsWith('read')) {
       this.updatePreviewRunning = false;
       if (this.updatePreviewing) {
         setTimeout(() => {
@@ -252,10 +259,10 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
           set.add(parseInt(elem.getAttribute('i'), 10));
         }
 
-        this.lineNumbers = (Array.from(set)).sort((a, b) => {
+        MoeApp.lineNumbers = (Array.from(set)).sort((a, b) => {
           return a - b;
         });
-        this.scrollMap = undefined;
+        MoeApp.scrollMap = undefined;
 
         document.getElementById('container').innerHTML = rendered.innerHTML;
         SVGFixer.fixIt(document.getElementById('container'));
@@ -271,6 +278,5 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
       });
     });
   }
-
 
 }

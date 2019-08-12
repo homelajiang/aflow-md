@@ -1,5 +1,11 @@
 export class MoeApp {
 
+  public static editMode = 'preview';
+  public static lineNumbers: number[];
+  public static scrollMap = new Array(2); // 滚动记录器
+  public static lineNumberTags;
+  public static editor;
+
   public static config = {
     'debug-mode': false,
     'scale-factor': 1.0,

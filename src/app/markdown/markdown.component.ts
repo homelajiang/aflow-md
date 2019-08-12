@@ -44,6 +44,7 @@ import 'codemirror/addon/mode/multiplex';
 import 'codemirror/addon/scroll/simplescrollbars';
 import 'codemirror/addon/selection/active-line';
 import {MoeScroll} from './moe-scroll';
+import {MoeMode} from './moe-mode';
 
 MoeMark.setOptions({
   math: true,
@@ -73,6 +74,7 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
     document_edited: false,
     directory: ''
   };
+  private moeMode: MoeMode;
 
 
   constructor() {
@@ -84,7 +86,7 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.codeMirrorInit();
     this.moeMarkInit();
-
+    this.moeMode = new MoeMode();
   }
 
 

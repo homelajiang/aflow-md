@@ -45,6 +45,7 @@ import 'codemirror/addon/scroll/simplescrollbars';
 import 'codemirror/addon/selection/active-line';
 import {MoeScroll} from './moe-scroll';
 import {MoeMode} from './moe-mode';
+import {MoeToolbar} from './moe-toolbar';
 
 MoeMark.setOptions({
   math: true,
@@ -85,8 +86,10 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.codeMirrorInit();
-    this.moeMarkInit();
+    this.scroller = new MoeScroll();
     this.moeMode = new MoeMode();
+    const toolbar = new MoeToolbar();
+    toolbar.createToolbar(['bold', 'italic', 'heading', '|', 'quote']);
   }
 
 
@@ -152,10 +155,6 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
       MoeApp.config['focus-mode'] = document.getElementById('editor').classList.contains('focus');
     });
 
-  }
-
-  moeMarkInit() {
-    this.scroller = new MoeScroll();
   }
 
   updatePre(force: boolean) {

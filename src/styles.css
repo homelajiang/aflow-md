@@ -6,6 +6,6 @@
 @import "./assets/moe/moe-style.css";
 /*预览样式*/
 @import "assets/moe/themes/GitHub/style.css";
-
 @import "./assets/moe/moe-scrollbar.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "assets/moe/simplemde.css";

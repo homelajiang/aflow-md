@@ -6,17 +6,17 @@ export class MoeMode {
   modeButton;
   rightPanel;
   modeMenu;
-  modeMenuItems;
+  // modeMenuItems;
   editor;
   container;
 
   constructor() {
     this.titlebar = document.getElementById('electron-titlebar');
-    this.main = document.getElementById('main');
+    this.main = document.getElementById('md-main');
     this.modeButton = document.getElementById('button-bottom-mode');
     this.rightPanel = document.getElementById('right-panel');
     this.modeMenu = document.getElementById('popup-menu-mode');
-    this.modeMenuItems = this.modeMenu.getElementsByTagName('li');
+    // this.modeMenuItems = this.modeMenu.getElementsByTagName('li');
     this.editor = document.getElementById('editor');
     this.container = document.getElementById('container');
 
@@ -25,12 +25,12 @@ export class MoeMode {
       this.setMode('write-medium');
     });
 
-    for (const it of this.modeMenuItems) {
-      it.addEventListener('click', () => {
-        this.setMode(it.attributes['data-name'].value);
-        MoeApp.editor.focus();
-      });
-    }
+    // for (const it of this.modeMenuItems) {
+    //   it.addEventListener('click', () => {
+    //     this.setMode(it.attributes['data-name'].value);
+    //     MoeApp.editor.focus();
+    //   });
+    // }
 
 
     this.editor.addEventListener('transitionend', (e) => {
@@ -87,15 +87,15 @@ export class MoeMode {
       return;
     }
 
-    for (const it of this.modeMenuItems) {
-      it.getElementsByClassName('fa')[0].style.opacity = (it.attributes['data-name'].value === m) ? '1' : '0';
-    }
+    // for (const it of this.modeMenuItems) {
+    //   it.getElementsByClassName('fa')[0].style.opacity = (it.attributes['data-name'].value === m) ? '1' : '0';
+    // }
 
     MoeApp.editMode = m;
     MoeApp.config['edit-mode'] = m;
-    document.getElementById('main').classList.remove('notransition');
+    document.getElementById('md-main').classList.remove('notransition');
     setTimeout(() => {
-      document.getElementById('main').classList.add('notransition');
+      document.getElementById('md-main').classList.add('notransition');
     }, 500);
   }
 

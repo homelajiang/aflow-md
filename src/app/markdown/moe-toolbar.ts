@@ -278,9 +278,10 @@ export class MoeToolbar {
       // }
       console.log('cursorActivity');
     });
-
-    const cmWrapper = MoeApp.editor.getWrapperElement();
-    cmWrapper.parentNode.insertBefore(bar, cmWrapper);
+    const toolbar = document.getElementById('main-container');
+    // const cmWrapper = MoeApp.editor.getWrapperElement();
+    // cmWrapper.parentNode.insertBefore(bar, cmWrapper);
+    toolbar.parentNode.insertBefore(bar, toolbar);
     return bar;
   }
 

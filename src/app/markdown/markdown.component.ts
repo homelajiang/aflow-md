@@ -89,7 +89,12 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
     this.scroller = new MoeScroll();
     this.moeMode = new MoeMode();
     const toolbar = new MoeToolbar();
-    toolbar.createToolbar(['bold', 'italic', 'heading', '|', 'quote']);
+    toolbar.createToolbar(['bold', 'italic', 'heading', '|',
+      'strikethrough', 'heading-smaller', 'heading-bigger', 'heading-1', 'heading-2', 'heading-3',
+      '|', 'code', 'quote', 'unordered-list', 'ordered-list', 'clean-block', '|',
+      'link', 'image', 'table', 'horizontal-rule', '|', 'preview', 'side-by-side', 'fullscreen',
+      '|', 'guide', 'undo', 'redo']);
+    // toolbar.createToolbar(['bold', 'italic', 'heading', '|', 'quote']);
   }
 
 

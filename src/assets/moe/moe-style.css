@@ -96,7 +96,7 @@ html, body {
   opacity: 0;
 }
 
-#main {
+#md-main {
   transition: all 500ms ease-in-out;
   position: fixed;
   left: 0;
@@ -125,30 +125,30 @@ html, body {
   transition: all 500ms ease-in-out;
 }
 
-#main.read-mode #left-panel {
+#md-main.read-mode #left-panel {
   left: -50%;
   width: 50%;
 }
 
-#main.read-mode #right-panel {
+#md-main.read-mode #right-panel {
   width: 100%;
   padding-right: 4px;
 }
 
-#main.read-mode #right-panel .cover-top {
+#md-main.read-mode #right-panel .cover-top {
   left: 0;
   width: calc(100% - 10px);
 }
 
-#main.write-mode #left-panel {
+#md-main.write-mode #left-panel {
   width: 100%;
 }
 
-#main.read-mode #left-panel .cover-top {
+#md-main.read-mode #left-panel .cover-top {
   width: calc(100% - 10px);
 }
 
-#main.write-mode #right-panel {
+#md-main.write-mode #right-panel {
   right: -50%;
   width: 50%;
 }
@@ -161,19 +161,19 @@ html, body {
   -webkit-user-select: initial;
 }
 
-#main.write-mode.write-mode-thin .CodeMirror-scroll {
+#md-main.write-mode.write-mode-thin .CodeMirror-scroll {
   width: calc(100% / 3 + 6px) !important;
   padding-left: calc(100% / 3) !important;
   padding-right: calc(100% / 3) !important;
 }
 
-#main.write-mode.write-mode-medium .CodeMirror-scroll {
+#md-main.write-mode.write-mode-medium .CodeMirror-scroll {
   width: calc(100% / 2 + 6px) !important;
   padding-left: calc(100% / 4) !important;
   padding-right: calc(100% / 4) !important;
 }
 
-#main.write-mode.write-mode-wide .CodeMirror-scroll {
+#md-main.write-mode.write-mode-wide .CodeMirror-scroll {
   width: calc((100% / 3) * 2 + 6px) !important;
   padding-left: calc(100% / 6) !important;
   padding-right: calc(100% / 6) !important;
@@ -263,19 +263,19 @@ html, body {
   transition: all 500ms ease-in-out;
 }
 
-#main.read-mode #cover-bottom-background-left {
+#md-main.read-mode #cover-bottom-background-left {
   left: -50%;
 }
 
-#main.read-mode #cover-bottom-background-right {
+#md-main.read-mode #cover-bottom-background-right {
   width: 100%;
 }
 
-#main.write-mode #cover-bottom-background-left {
+#md-main.write-mode #cover-bottom-background-left {
   width: 100%;
 }
 
-#main.write-mode #cover-bottom-background-right {
+#md-main.write-mode #cover-bottom-background-right {
   right: -50%;
 }
 
@@ -318,23 +318,23 @@ html, body {
     transition: all 500ms ease-in-out;
 }*/
 
-body[settings-editor-font="default"] #editor * {
+#md-main[settings-editor-font="default"] #editor * {
   font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', 'monospace' !important;
 }
 
-html[lang="zh_CN"] body[settings-editor-font="default"] #editor * {
+html[lang="zh_CN"] #md-main[settings-editor-font="default"] #editor * {
   font-family: 'Roboto Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Liberation Mono', 'Dejavu Mans Mono', 'monospace', 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft Yahei' !important;
 }
 
-body[settings-editor-font="monospace"] #editor * {
+#md-main[settings-editor-font="monospace"] #editor * {
   font-family: monospace !important;
 }
 
-body[settings-editor-font="serif"] #editor * {
+#md-main[settings-editor-font="serif"] #editor * {
   font-family: serif !important;
 }
 
-body[settings-editor-font="sans"] #editor * {
+#md-main[settings-editor-font="sans"] #editor * {
   font-family: sans-serif !important;
 }
 
@@ -365,28 +365,28 @@ body[settings-editor-font="sans"] #editor * {
   -webkit-user-select: initial;
 }
 
-#main.read-mode #container {
+#md-main.read-mode #container {
   padding-left: 0;
   padding-right: 0;
 }
 
-#main.read-mode #container-wrapper {
+#md-main.read-mode #container-wrapper {
   width: calc(100%);
 }
 
-#main.read-mode.read-mode-thin #container {
+#md-main.read-mode.read-mode-thin #container {
   width: calc(100% / 3);
   margin-left: calc(100% / 3);
   margin-right: calc(100% / 3);
 }
 
-#main.read-mode.read-mode-medium #container {
+#md-main.read-mode.read-mode-medium #container {
   width: calc(100% / 2);
   margin-left: calc(100% / 4);
   margin-right: calc(100% / 4);
 }
 
-#main.read-mode.read-mode-wide #container {
+#md-main.read-mode.read-mode-wide #container {
   width: calc((100% / 3) * 2);
   margin-left: calc(100% / 6);
   margin-right: calc(100% / 6);
@@ -436,7 +436,7 @@ body[settings-editor-font="sans"] #editor * {
   z-index: 1000000 !important;
 }
 
-#main.write-mode .CodeMirror-vscrollbar {
+#md-main.write-mode .CodeMirror-vscrollbar {
   position: fixed !important;
   right: 4px !important;
   bottom: 25px !important;

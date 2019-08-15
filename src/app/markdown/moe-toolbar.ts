@@ -263,24 +263,21 @@ export class MoeToolbar {
       bar.appendChild(el);
     }
 
+    // Will be fired when the cursor or selection moves, or any change is made to the editor content.
     MoeApp.editor.on('cursorActivity', () => {
-      // var stat = getState(cm);
-      //
-      // for(var key in toolbarData) {
-      //   (function(key) {
-      //     var el = toolbarData[key];
-      //     if(stat[key]) {
-      //       el.className += " active";
-      //     } else if(key != "fullscreen" && key != "side-by-side") {
-      //       el.className = el.className.replace(/\s*active\s*/g, "");
-      //     }
-      //   })(key);
-      // }
+      const stat = this.getState(MoeApp.editor);
+
+      for (const key in toolbarData) {
+        const el = toolbarData[key];
+        if (stat[key]) {
+          el.className += ' active';
+        } else if (key !== 'fullscreen' && key !== 'side-by-side') {
+          el.className = el.className.replace(/\s*active\s*/g, '');
+        }
+      }
       console.log('cursorActivity');
     });
     const toolbar = document.getElementById('main-container');
-    // const cmWrapper = MoeApp.editor.getWrapperElement();
-    // cmWrapper.parentNode.insertBefore(bar, cmWrapper);
     toolbar.parentNode.insertBefore(bar, toolbar);
     return bar;
   }

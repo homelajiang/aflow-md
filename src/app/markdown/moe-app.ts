@@ -6,6 +6,20 @@ export class MoeApp {
   public static lineNumberTags;
   public static editor;
 
+  public static options = {
+    blockStyles: {
+      bold: '**',
+      italic: '*',
+      code: '```'
+    },
+    insertTexts: {
+      horizontalRule: ['', '\n\n-----\n\n'],
+      image: ['![](http://', ')'],
+      link: ['[', '](http://)'],
+      table: ['', '\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n'],
+    }
+  };
+
   public static config = {
     'debug-mode': false,
     'scale-factor': 1.0,

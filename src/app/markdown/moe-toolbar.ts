@@ -14,6 +14,7 @@ export class MoeToolbar {
     toggleOrderedList: this.toggleOrderedList,
     toggleUnorderedList: this.toggleUnorderedList,
     toggleCodeBlock: this.toggleCodeBlock,
+    toggleEdit: this.toggleEdit(),
     togglePreview: this.togglePreview, //
     toggleStrikethrough: this.toggleStrikethrough,
     toggleHeading1: this.toggleHeading1,
@@ -153,6 +154,13 @@ export class MoeToolbar {
     },
     'separator-3': {
       name: 'separator-3'
+    },
+    edit: {
+      name: 'edit',
+      action: this.toggleEdit,
+      className: 'fa fa-file-alt',
+      title: 'Toggle Edit',
+      default: true
     },
     preview: {
       name: 'preview',
@@ -770,6 +778,13 @@ export class MoeToolbar {
     // cm.refresh();
   }
 
+  /**
+   * Edit action
+   */
+  private toggleEdit() {
+
+  }
+
 
   /**
    * Preview action.
@@ -818,44 +833,44 @@ export class MoeToolbar {
    * Toggle full screen of the editor.
    */
   private toggleFullScreen() {
-    // /*    // Set fullscreen
-    //     MoeApp.editor.setOption('fullScreen', !MoeApp.editor.getOption('fullScreen'));
-    //
-    //
-    //     // Prevent scrolling on body during fullscreen active
-    //     if (MoeApp.editor.getOption('fullScreen')) {
-    //       this.savedOverflow = document.body.style.overflow;
-    //       document.body.style.overflow = 'hidden';
-    //     } else {
-    //       document.body.style.overflow = this.savedOverflow;
-    //     }
-    //
-    //
-    //     // Update toolbar class
-    //     const wrap = MoeApp.editor.getWrapperElement();
-    //
-    //     if (!/fullscreen/.test(wrap.previousSibling.className)) {
-    //       wrap.previousSibling.className += ' fullscreen';
-    //     } else {
-    //       wrap.previousSibling.className = wrap.previousSibling.className.replace(/\s*fullscreen\b/, '');
-    //     }
-    //
-    //
-    //     // Update toolbar button
-    //     const toolbarButton = editor.toolbarElements.fullscreen;
-    //
-    //     if (!/active/.test(toolbarButton.className)) {
-    //       toolbarButton.className += ' active';
-    //     } else {
-    //       toolbarButton.className = toolbarButton.className.replace(/\s*active\s*!/g, '');
-    //     }
-    //
-    //
-    //     // Hide side by side if needed
-    //     const sidebyside = MoeApp.editor.getWrapperElement().nextSibling;
-    //     if (/editor-preview-active-side/.test(sidebyside.className)) {
-    //       this.toggleSideBySide(editor);
-    //     }*/
+        // Set fullscreen
+        MoeApp.editor.setOption('fullScreen', !MoeApp.editor.getOption('fullScreen'));
+
+
+        // Prevent scrolling on body during fullscreen active
+        if (MoeApp.editor.getOption('fullScreen')) {
+          this.savedOverflow = document.body.style.overflow;
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = this.savedOverflow;
+        }
+
+
+        // Update toolbar class
+        const wrap = MoeApp.editor.getWrapperElement();
+
+        if (!/fullscreen/.test(wrap.previousSibling.className)) {
+          wrap.previousSibling.className += ' fullscreen';
+        } else {
+          wrap.previousSibling.className = wrap.previousSibling.className.replace(/\s*fullscreen\b/, '');
+        }
+
+
+/*        // Update toolbar button
+        const toolbarButton = editor.toolbarElements.fullscreen;
+
+        if (!/active/.test(toolbarButton.className)) {
+          toolbarButton.className += ' active';
+        } else {
+          toolbarButton.className = toolbarButton.className.replace(/\s*active\s*!/g, '');
+        }
+
+
+        // Hide side by side if needed
+        const sidebyside = MoeApp.editor.getWrapperElement().nextSibling;
+        if (/editor-preview-active-side/.test(sidebyside.className)) {
+          this.toggleSideBySide(editor);
+        }*/
   }
 
 }

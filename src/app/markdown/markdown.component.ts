@@ -90,9 +90,9 @@ export class MarkdownComponent implements OnInit, AfterViewInit {
     this.moeMode = new MoeMode();
     const toolbar = new MoeToolbar();
     toolbar.createToolbar(['bold', 'italic', 'heading', '|',
-       'quote', 'code', 'unordered-list', 'ordered-list', '|',
+      'quote', 'code', 'unordered-list', 'ordered-list', '|',
       'link', 'image', 'table', '|',
-      'preview', 'side-by-side', 'fullscreen', '|',
+      'edit', 'preview', 'side-by-side', 'fullscreen', '|',
       'guide']);
     // toolbar.createToolbar(['bold', 'italic', 'heading', '|', 'quote']);
   }

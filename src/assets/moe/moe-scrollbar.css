@@ -18,7 +18,7 @@
  */
 
 .CodeMirror-vscrollbar {
-    width: 16px;
+    width: 6px;
     overflow-y: hidden !important;
 }
 
